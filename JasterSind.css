@@ -1,5 +1,5 @@
 html, body {
-  background: #444;
+  background: #222;
   position: absolute;
   height: 100%;
   width: 100%;
@@ -40,6 +40,8 @@ ol.dotsContainer, ol.movesContainer {
 
 .dot {
   cursor: pointer;
+  box-shadow: 0 1px 6px -2px rgba(0, 0, 0, .8);
+  transition: all .3s;
 }
 .dot, .dot_answ {
   list-style: none;
@@ -47,9 +49,10 @@ ol.dotsContainer, ol.movesContainer {
   height: 20px;
   border-radius: 20px;
   background: transparent;
-  border: 2px solid rgba(0, 0, 0, .3);
+  border: 1px solid rgba(255, 255, 255, .3);
   margin: 12px;
   display: inline-block;
+  
 }
 .answer, .answer_l1, .answer_l2 {
   padding: 0;
@@ -69,4 +72,5 @@ ol.dotsContainer, ol.movesContainer {
 #solutionContainer {
   position: relative;
   top: 0;
+  background: #777;
 }
