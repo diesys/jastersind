@@ -1,0 +1,72 @@
+html, body {
+  background: #444;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+header {
+  position: absolute;
+  display: block;
+  text-align: center;
+  color: #ccc;
+}
+
+#gameboard {
+  top: 50px;
+  margin-top: 40px;
+  position: relative;
+}
+#gameboard h2 {
+  vertical-align: center;
+}
+
+ol.dotsContainer, ol.movesContainer {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+.dot {
+  cursor: pointer;
+}
+.dot, .dot_answ {
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background: transparent;
+  border: 2px solid rgba(0, 0, 0, .3);
+  margin: 12px;
+  display: inline-block;
+}
+.answer, .answer_l1, .answer_l2 {
+  padding: 0;
+  margin: 0;
+}
+.answer {
+  display: inline-block;
+  margin-left: 20px;
+}
+.dot_answ {
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  margin: 3px;
+}
+
+#solutionContainer {
+  position: relative;
+  top: 0;
+}
