@@ -1,9 +1,19 @@
+@keyframes slideFromLeft {
+  0% {left: -100%;}
+  100% {left: 50%;}
+}
+
 html, body {
-  background: #222;
   position: absolute;
   height: 100%;
   width: 100%;
   margin: 0;
+}
+html, body {
+  background-position: center;
+  background: #222;
+  background-image: url('img/wood4.png');
+  background-repeat: round;
 }
 header {
   position: absolute;
@@ -27,8 +37,11 @@ ol.dotsContainer, ol.movesContainer {
   transform: translateX(-50%);
   width: auto;
   text-align: center;
-  margin: 0;
+  margin: 32px;
   padding: 0;
+  max-width: 400px;
+
+  animation: slideFromLeft 1s;
 
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
@@ -41,15 +54,16 @@ ol.dotsContainer, ol.movesContainer {
 .dot {
   cursor: pointer;
   box-shadow: 0 1px 6px -2px rgba(0, 0, 0, .8);
-  transition: all .3s;
+  transition: margin .4s;
 }
 .dot, .dot_answ {
   list-style: none;
   width: 20px;
   height: 20px;
   border-radius: 20px;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, .3);
+  background: rgba(0, 0, 0, .1);
+  /* border: 1px solid rgba(255, 255, 255, .2); */
+  border: 1px solid rgba(5, 5, 5, .4);
   margin: 12px;
   display: inline-block;
   
@@ -72,5 +86,12 @@ ol.dotsContainer, ol.movesContainer {
 #solutionContainer {
   position: relative;
   top: 0;
-  background: #777;
+  max-width: 220px;
+  /* max-width: 35%; */
+  border-radius: 10px;
+  padding-top: 2px;
+  /* border: 2px solid rgba(20, 20, 20, .3); */
+  /* border-top: 2px solid rgba(200, 200, 200, .04); */
+  /* box-shadow: 0 1px 20px -5px rgba(0, 0, 0, .3); */
+  /* background: rgba(50, 50, 50, .6); */
 }

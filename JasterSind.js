@@ -1,6 +1,6 @@
 $(document).ready(function () {
-  var colorsList = ["#F23553", "#F7D843", "#69E569", "#406DF6", "#9351D3", "#DB46BE", "#EC8C34", "#36E1EC", "#ECECEC", "#1F1F1F"];
-  var n_colors = 10;
+  var colorsList = ["#F23553", "#F7D843", "#69E569", "#406DF6", "#9351D3", "#DB46BE", "#EC8C34", "#36E1EC", "#ECECEC"]//, "#1F1F1F"];
+  var n_colors = 9;
   var configuration = [];
 
   $('.try.dot').bind("click", function () {
