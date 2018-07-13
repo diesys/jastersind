@@ -28,7 +28,7 @@ header {
   position: relative;
 }
 #gameboard h2 {
-  vertical-align: center;
+  text-align: center
 }
 
 ol.dotsContainer, ol.movesContainer {
@@ -61,9 +61,9 @@ ol.dotsContainer, ol.movesContainer {
   width: 20px;
   height: 20px;
   border-radius: 20px;
-  background: rgba(0, 0, 0, .1);
+  background: rgba(0, 0, 0, .2);
   /* border: 1px solid rgba(255, 255, 255, .2); */
-  border: 1px solid rgba(5, 5, 5, .4);
+  border: 1px solid rgba(5, 5, 5, .5);
   margin: 12px;
   display: inline-block;
   
