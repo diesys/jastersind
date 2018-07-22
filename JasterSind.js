@@ -42,18 +42,46 @@ $(document).ready(function () {
 
 });
 
- function getUrlVars() {
-   var vars = {};
-   var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
-     vars[key] = value;
-   });
-   return vars;
- }
+function getUrlVars() {
+  var vars = {};
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+    vars[key] = value;
+  });
+  return vars;
+}
 
- function rgb2hex(orig) {
-   var rgb = orig.replace(/\s/g, '').match(/^rgba?\((\d+),(\d+),(\d+)/i);
-   return (rgb && rgb.length === 4) ? "#" +
-     ("0" + parseInt(rgb[1], 10).toString(16)).slice(-2) +
-     ("0" + parseInt(rgb[2], 10).toString(16)).slice(-2) +
-     ("0" + parseInt(rgb[3], 10).toString(16)).slice(-2) : orig;
- }
+function rgb2hex(orig) {
+  var rgb = orig.replace(/\s/g, '').match(/^rgba?\((\d+),(\d+),(\d+)/i);
+  return (rgb && rgb.length === 4) ? "#" +
+    ("0" + parseInt(rgb[1], 10).toString(16)).slice(-2) +
+    ("0" + parseInt(rgb[2], 10).toString(16)).slice(-2) +
+    ("0" + parseInt(rgb[3], 10).toString(16)).slice(-2) : orig;
+}
+//funzione check tra soluzione e tentativo
+function check(arrayTry, arraySol) {
+  var arrayResult = [2,2,2,2];  
+  var i,j;
+  for (i = 0; i < arrayTry.length; i=i+1)
+    for (j = 0; j < arraySol.length; j=j+1) {
+      if(arrayTry[i]==arraySol[j]){
+        if(i==j)
+        //rosso: pos e col
+          arrayResult[i]=0;
+        else
+        //bianco: col
+          arrayResult[i]=1;
+      }
+    }
+  return arrayResult.sort();
+}
+
+//funzione risposta pallini rossi/bianchi rispetto alla soluzione
+// function answerTry(arrayAns) {
+//   var i;
+//   for(i = 0; i<arrayAns.length; i = i+1){
+//     if(arrayTry[i]==0)
+
+//     else if(arrayTry)
+//   }
+//   return arrayResult.sort();
+// }
