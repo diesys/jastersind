@@ -12,7 +12,7 @@ html, body {
 html, body {
   background-position: center;
   background: #222;
-  background-image: url('img/wood4.png');
+  backgroundvar act_clr=$(this).-image: url('img/wood4.png');
   background-repeat: round;
 }
 header {
@@ -66,8 +66,11 @@ ol.dotsContainer, ol.movesContainer {
   border: 1px solid rgba(5, 5, 5, .5);
   margin: 12px;
   display: inline-block;
-  
 }
+/* 
+.dot.try {
+  background-color: #F23553;
+} */
 .answer, .answer_l1, .answer_l2 {
   padding: 0;
   margin: 0;
