@@ -11,18 +11,27 @@ $(document).ready(function () {
     
     if (e.shiftKey) {
       if (act_ind < 1) {
-        $(this).css("background-color", colorsList[n_colors - 1]);
-      } else {
-        $(this).css("background-color", colorsList[(act_ind - 1) % (n_colors)]);
-      }
-      // console.log('using SHIFT and click, cycling backwards colours');
-    }
+        $(this).animate({
+              backgroundColor: colorsList[n_colors - 1]
+            }, 350, "swing");
+          } else {
+            $(this).animate({
+              backgroundColor: colorsList[(act_ind - 1) % (n_colors)]
+            }, 350, "swing");
+
+          }
+          // console.log('using SHIFT and click, cycling backwards colours');
+        }
 
     else {
       if (act_ind < 0) {
-        $(this).css("background-color", colorsList[0]);
+        $(this).animate({
+          backgroundColor: colorsList[0]
+        }, 350, "swing");
       } else {  
-        $(this).css("background-color", colorsList[( act_ind + 1 ) % (n_colors)]);
+        $(this).animate({
+          backgroundColor: colorsList[(act_ind + 1) % (n_colors)]
+        }, 350, "swing");
       }
       // console.log('using click, cycling forward colours');
     }
@@ -38,7 +47,7 @@ $(document).ready(function () {
     // console.log('select color: ' ,clr);
   });
   
-  console.log('actual configuration: ', configuration);
+  // console.log('actual configuration: ', configuration);
 
 });
 
@@ -76,12 +85,15 @@ function check(arrayTry, arraySol) {
 }
 
 //funzione risposta pallini rossi/bianchi rispetto alla soluzione
-// function answerTry(arrayAns) {
-//   var i;
-//   for(i = 0; i<arrayAns.length; i = i+1){
-//     if(arrayTry[i]==0)
-
-//     else if(arrayTry)
-//   }
-//   return arrayResult.sort();
-// }
+function answerTry(arrayAns) {
+  var i;
+  for(i = 0; i<arrayAns.length; i = i+1){
+    if(arrayAns[i]==0)
+      console.log()
+    if(arrayAns[i]==1) 
+      console.log()
+    else
+      console.log()
+  }
+  return arrayResult.sort();
+}

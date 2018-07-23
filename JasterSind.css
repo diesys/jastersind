@@ -1,7 +1,7 @@
-@keyframes slideFromLeft {
+/* @keyframes slideFromLeft {
   0% {left: -100%;}
   100% {left: 50%;}
-}
+} */
 
 html, body {
   position: absolute;
@@ -12,7 +12,7 @@ html, body {
 html, body {
   background-position: center;
   background: #222;
-  backgroundvar act_clr=$(this).-image: url('img/wood4.png');
+  background-image: url('img/wood4.png');
   background-repeat: round;
 }
 header {
@@ -54,7 +54,7 @@ ol.dotsContainer, ol.movesContainer {
 .dot {
   cursor: pointer;
   box-shadow: 0 1px 6px -2px rgba(0, 0, 0, .8);
-  transition: margin .4s;
+  transition: margin bacground .4s;
 }
 .dot, .dot_answ {
   list-style: none;
