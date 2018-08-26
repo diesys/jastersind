@@ -1,43 +1,47 @@
-$(document).ready(function () {
-  var colorsList = ["#f23553", "#f7d843", "#69e569", "#406df6", "#9351d3", "#db46be", "#ec8c34", "#36e1ec", "#ececec"];//, "#1f1f1f"];
-  var colorsListM = ["#F23553", "#F7D843", "#69E569", "#406DF6", "#9351D3", "#DB46BE", "#EC8C34", "#36E1EC", "#ECECEC"];//, "#1F1F1F"];
-  var n_colors = 9;
-  var configuration = [];
+var colorsList = ["#f23553", "#f7d843", "#69e569", "#406df6", "#9351d3", "#db46be", "#ec8c34", "#36e1ec", "#ececec"];//, "#1f1f1f"];
+var colorsListM = ["#F23553", "#F7D843", "#69E569", "#406DF6", "#9351D3", "#DB46BE", "#EC8C34", "#36E1EC", "#ECECEC"];//, "#1F1F1F"];
+var n_colors = 9;
+var configuration = [];
+var N = 2;
 
-  $('.try.dot').bind("click", function (e) {
-    var act_clrRGB = $(this).css('background-color');
-    var act_clr = rgb2hex(act_clrRGB);
-    var act_ind = Math.max(colorsList.indexOf(act_clr), colorsListM.indexOf(act_clr));
-    
-    if (e.shiftKey) {
-      if (act_ind < 1) {
-        $(this).animate({
-              backgroundColor: colorsList[n_colors - 1]
-            }, 350, "swing");
-          } else {
-            $(this).animate({
-              backgroundColor: colorsList[(act_ind - 1) % (n_colors)]
-            }, 350, "swing");
+function dotClick (e) {
+  var act_clrRGB = $(this).css('background-color');
+  var act_clr = rgb2hex(act_clrRGB);
+  var act_ind = Math.max(colorsList.indexOf(act_clr), colorsListM.indexOf(act_clr));
 
-          }
-          // console.log('using SHIFT and click, cycling backwards colours');
+  if (e.shiftKey) {
+    if (act_ind < 1) {
+      $(this).animate({
+            backgroundColor: colorsList[n_colors - 1]
+          }, 350, "swing");
+        } else {
+          $(this).animate({
+            backgroundColor: colorsList[(act_ind - 1) % (n_colors)]
+          }, 350, "swing");
+
         }
-
-    else {
-      if (act_ind < 0) {
-        $(this).animate({
-          backgroundColor: colorsList[0]
-        }, 350, "swing");
-      } else {  
-        $(this).animate({
-          backgroundColor: colorsList[(act_ind + 1) % (n_colors)]
-        }, 350, "swing");
+        // console.log('using SHIFT and click, cycling backwards colours');
       }
-      // console.log('using click, cycling forward colours');
+
+  else {
+    if (act_ind < 0) {
+      $(this).animate({
+        backgroundColor: colorsList[0]
+      }, 350, "swing");
+    } else {
+      $(this).animate({
+        backgroundColor: colorsList[(act_ind + 1) % (n_colors)]
+      }, 350, "swing");
     }
-    // console.log('Before click:', act_clr, act_ind);
-    
-  });
+    // console.log('using click, cycling forward colours');
+  }
+  // console.log('Before click:', act_clr, act_ind);
+
+}
+
+$(document).ready(function () {
+
+  $('.try.dot').bind("click", dotClick);
 
 
   $('.dot.sol').each(function(){
@@ -46,7 +50,7 @@ $(document).ready(function () {
     configuration.push(clr);
     // console.log('select color: ' ,clr);
   });
-  
+
   // console.log('actual configuration: ', configuration);
 
 });
@@ -68,7 +72,7 @@ function rgb2hex(orig) {
 }
 //funzione check tra soluzione e tentativo
 function check(arrayTry, arraySol) {
-  var arrayResult = [2,2,2,2];  
+  var arrayResult = [2,2,2,2];
   var i,j;
   for (i = 0; i < arrayTry.length; i=i+1)
     for (j = 0; j < arraySol.length; j=j+1) {
@@ -90,10 +94,51 @@ function answerTry(arrayAns) {
   for(i = 0; i<arrayAns.length; i = i+1){
     if(arrayAns[i]==0)
       console.log()
-    if(arrayAns[i]==1) 
+    if(arrayAns[i]==1)
       console.log()
     else
       console.log()
   }
   return arrayResult.sort();
+}
+
+function newTry() {
+  N++;
+  movesC = document.getElementById("movesContainer");
+  dotsC = document.createElement("OL");
+
+  //movesC.appendChild(dotsC);
+
+  dotsC.id = "move" + N;
+  dotsC.classList = "dotsContainer";
+
+  for (i = 0; i < 4; i++) {
+    dot = document.createElement("LI");
+    dot.classList = "try dot";
+    dot.id = "m" + N + "d" + (i+1);
+    dot.onclick = dotClick;
+    dotsC.appendChild(dot);
+  }
+  movesC.appendChild(dotsC);
+
+  ansC = document.createElement("DIV");
+  ansC.classList = "answer";
+
+  for (i = 0; i < 2; i++) {
+    ansC_sub = document.createElement("DIV");
+    ansC_sub.classList = "answer_l" + (i+1);
+    //ansC.appendChild(ansC_sub);
+    for (j = 0; j < 2; j++) {
+      dotlet = document.createElement("LI");
+      dotlet.id = ("a" + N + "2d") + (2*i + j + 1);
+      dotlet.classList = "dot_answ";
+      //ansC_sub.appendChild(dotlet);
+      ansC_sub.appendChild(dotlet);
+    }
+    ansC.appendChild(ansC_sub);
+  }
+  dotsC.appendChild(ansC);
+
+
+
 }
