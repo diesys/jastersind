@@ -25,7 +25,7 @@ header {
 #gameboard {
   /* top: 50px; */
   margin-top: 40px;
-  position: relative;
+  position: absolute;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -58,6 +58,7 @@ ol.movesContainer {
   margin: 32px;
 }
 
+a.button_submit_inline,
 a.button_submit {
   /* width: 50px; */
   /* height: 50px; */
@@ -66,10 +67,10 @@ a.button_submit {
   background: rgba(0, 0, 0, .2);
   border: 1px solid rgba(5, 5, 5, .5); 
   /* float: left; */
-  display: block;
+  display: inline-block;
   text-align: center;
-  position: relative;
-  left: 50%;
+  position: fixed;
+  left: 91%;
   transform: translateX(-50%);
   padding: 8px;
   padding-top: 10px;
@@ -79,8 +80,10 @@ a.button_submit {
   box-shadow: 0 2px 20px rgba(0, 0, 0, .2);
   transition: .4s .1s;
   margin: 0;
-  margin-top: 10px;
+  margin-top: 5px;
+  /* top: -15px; */
 }
+a.button_submit_inline:hover,
 a.button_submit:hover {
   background: rgba(20, 20, 20, .1);
   transition: .3s;
@@ -107,19 +110,20 @@ a.button_submit:hover {
 .dot.try {
   background-color: #F23553;
 } */
-.answer, .answer_l1, .answer_l2 {
+.answer, .answer_l0, .answer_l1 {
   padding: 0;
   margin: 0;
 }
 .answer {
   display: inline-block;
   margin-left: 20px;
+  opacity: 0;
 }
 .dot_answ {
   width: 10px;
   height: 10px;
   border-radius: 10px;
-  margin: 3px;
+  margin: 3px 5px;
 }
 
 #solutionContainer {
@@ -129,6 +133,7 @@ a.button_submit:hover {
   /* max-width: 35%; */
   border-radius: 10px;
   padding-top: 2px;
+  /* border-radius: 30px; */
   /* border: 2px solid rgba(20, 20, 20, .3); */
   /* border-top: 2px solid rgba(200, 200, 200, .04); */
   /* box-shadow: 0 1px 20px -5px rgba(0, 0, 0, .3); */

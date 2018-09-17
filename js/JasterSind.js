@@ -44,7 +44,8 @@ $(document).ready(function () {
 
   btn = document.createElement("A");
   btn.id = "submit";
-  btn.classList = "button_submit";
+  // btn.classList = "button_submit";
+  btn.classList = "button_submit_inline";
   btn.onclick = submit;
   //btn.href = "";
 
@@ -53,6 +54,7 @@ $(document).ready(function () {
 
   btn.appendChild(btnchk);
   dotsC.appendChild(btn);
+  // $(body).appendChild(btn);
 
   // console.log('actual configuration: ', configuration);
 
@@ -65,34 +67,6 @@ function getUrlVars() {
   });
   return vars;
 }
-/*
-function rgb2hex(orig) {
-  var rgb = orig.replace(/\s/g, '').match(/^rgba?\((\d+),(\d+),(\d+)/i);
-  return (rgb && rgb.length === 4) ? "#" +
-    ("0" + parseInt(rgb[1], 10).toString(16)).slice(-2) +
-    ("0" + parseInt(rgb[2], 10).toString(16)).slice(-2) +
-    ("0" + parseInt(rgb[3], 10).toString(16)).slice(-2) : orig;
-}
-*/
-//funzione check tra soluzione e tentativo
-/*
-function old_check(arrayTry, arraySol) {
-  var arrayResult = [2,2,2,2];
-  var i,j;
-  for (i = 0; i < arrayTry.length; i=i+1)
-    for (j = 0; j < arraySol.length; j=j+1) {
-      if(arrayTry[i]==arraySol[j]){
-        if(i==j)
-        //rosso: pos e col
-          arrayResult[i]=0;
-        else
-        //bianco: col
-          arrayResult[i]=1;
-      }
-    }
-  return arrayResult.sort();
-}
-*/
 
 function check (trg, gss) {
   res = [0,0]
@@ -120,9 +94,6 @@ function submit () {
   console.log(chk);
   showRes(chk);
   if (chk[0] == 4) {
-    //p = document.createElement("H1");
-    //p.innerHTML = '';
-    //document.getElementById("movesContainer").appendChild(p);
     // mag section
     $(".mag").fadeIn( "slow", function() {});
 
@@ -171,7 +142,7 @@ function newTry() {
   ansC.classList = "answer";
 
   for (i = 0; i < 2; i++) {
-    ansC_sub = document.createElement("DIV");
+    ansC_sub = document.createElement("OL");
     ansC_sub.classList = "answer_l" + i;
 
     for (j = 0; j < 2; j++) {
@@ -191,12 +162,15 @@ function newTry() {
 
 function showRes (res) {
   dotN = 0
+  $('.answer').animate({ opacity: '1'}, 500, "swing");
   for (i = 0; i < res[0]; i++) {
-    $('#a'+(N-1)+'2d'+dotN).css('background-color', 'blue');
+    //clr and pos
+    $('#a'+(N-1)+'2d'+dotN).animate({ backgroundColor: 'red'}, 500, "swing");
     dotN++;
   }
   for (i = 0; i < res[1]; i++) {
-    $('#a'+(N-1)+'2d'+dotN).css('background-color', 'purple');
+    //clr
+    $('#a'+(N-1)+'2d'+dotN).animate({ backgroundColor: 'white'}, 500, "swing");
     dotN++;
   }
 }
