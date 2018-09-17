@@ -1,5 +1,6 @@
 var colorsList = ["#f23553", "#f7d843", "#69e569", "#406df6", "#9351d3", "#db46be", "#ec8c34", "#36e1ec", "#ececec"];//, "#1f1f1f"];
 var colorsListM = ["#F23553", "#F7D843", "#69E569", "#406DF6", "#9351D3", "#DB46BE", "#EC8C34", "#36E1EC", "#ECECEC"];//, "#1F1F1F"];
+var answerCol = ["#f23553", "#ffffff"];
 var n_colors = 9;
 var configuration = [];
 var lastGuess = [-1, -1, -1, -1];
@@ -17,9 +18,13 @@ function dotClick (e) {
   else
     colIx = lastGuess[dotNumber] + ((e.shiftKey)?-1:1) + n_colors;
   lastGuess[dotNumber] = colIx % n_colors;
-  $(this).animate({ backgroundColor: colorsList[colIx % n_colors] }, 350, "swing");
+  $(this).animate({ backgroundColor: colorsList[colIx % n_colors] }, 200, "swing");
 
 }
+
+// TODO
+// 
+// attivare l'hover del button submit solo se il set e' composto da 4 colori
 
 $(document).ready(function () {
 
@@ -95,7 +100,10 @@ function submit () {
   showRes(chk);
   if (chk[0] == 4) {
     // mag section
-    $(".mag").fadeIn( "slow", function() {});
+    // $("").fadeIn( "slow", function() {});
+    $("#solutionContainer").animate({ opacity: '1' }, 500, "swing");
+    $("#title").animate({ opacity: '0' }, 500, "swing");
+    $("#submit").animate({ opacity: '0' }, 200, "swing");
 
     window.scrollTo(0,document.body.scrollHeight);
     //
@@ -165,12 +173,12 @@ function showRes (res) {
   $('.answer').animate({ opacity: '1'}, 500, "swing");
   for (i = 0; i < res[0]; i++) {
     //clr and pos
-    $('#a'+(N-1)+'2d'+dotN).animate({ backgroundColor: 'red'}, 500, "swing");
+    $('#a'+(N-1)+'2d'+dotN).animate({ backgroundColor: answerCol[0]}, 500, "swing");
     dotN++;
   }
   for (i = 0; i < res[1]; i++) {
     //clr
-    $('#a'+(N-1)+'2d'+dotN).animate({ backgroundColor: 'white'}, 500, "swing");
+    $('#a'+(N-1)+'2d'+dotN).animate({ backgroundColor: answerCol[1]}, 500, "swing");
     dotN++;
   }
 }
