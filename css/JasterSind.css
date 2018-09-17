@@ -149,7 +149,7 @@ a.button_submit:hover {
   border-radius: 10px;
   padding-top: 2px;
   margin: 0;
-  opacity: 0.5;
+  opacity: 0;
   /* border-radius: 30px; */
   /* border: 2px solid rgba(20, 20, 20, .3); */
   /* border-top: 2px solid rgba(200, 200, 200, .04); */
