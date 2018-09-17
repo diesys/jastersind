@@ -108,16 +108,18 @@ function submit () {
   showRes(chk);
   if (chk[0] == 4) {
     // mag section
-    // $("").fadeIn( "slow", function() {});
-    $("#solutionContainer").animate({ opacity: '1' }, 500, "swing");
-    $("#title").animate({ opacity: '0' }, 500, "swing");
-    $("#submit").animate({ opacity: '0' }, 200, "swing");
-    
     win_msg = document.createElement("DIV");
     win_msg.classList = "win_message";
     tries = $('.try.dot').length/4;
-    win_msg.innerHTML = "Congrats, you found the combination in " + tries + " tries!";
+    win_msg.innerHTML = "Congrats, you found the combination in " + ((tries == 1) ? '1 try!' : tries + 'tries!');
     dotsC.appendChild(win_msg);
+
+    // $("").fadeIn( "slow", function() {});
+    $("#solutionContainer").animate({ opacity: '1' }, 500, "swing");
+    // $("#title").animate({ opacity: '0' }, 500, "swing");
+    $("#title").css({"transform": "none"}).animate({left: "0px", transform: "none"}, 500, "swing");
+    $("#submit").animate({ opacity: '0' }, 200, "swing");
+    $(".win_message").animate({ opacity: '1' }, 800, "swing");
     
     // window.scrollTo(0,document.body.scrollHeight);
     //
