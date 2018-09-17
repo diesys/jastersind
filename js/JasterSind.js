@@ -1,5 +1,5 @@
-var colorsList = ["#f23553", "#f7d843", "#69e569", "#406df6", "#9351d3", "#db46be", "#ec8c34", "#36e1ec", "#ececec"];//, "#1f1f1f"];
-var colorsListM = ["#F23553", "#F7D843", "#69E569", "#406DF6", "#9351D3", "#DB46BE", "#EC8C34", "#36E1EC", "#ECECEC"];//, "#1F1F1F"];
+var colorsList = ["#f73030", "#f7d843", "#69e569", "#406df6", "#9351d3", "#db46be", "#ec8c34", "#36e1ec", "#f4f4f4"]; //, "#1f1f1f"];
+// var colorsListM = ["#F23553", "#F7D843", "#69E569", "#406DF6", "#9351D3", "#DB46BE", "#EC8C34", "#36E1EC", "#ECECEC"];//, "#1F1F1F"];
 var answerCol = ["#f23553", "#ffffff"];
 var n_colors = 9;
 var configuration = [];
@@ -25,6 +25,11 @@ function dotClick (e) {
 // TODO
 // 
 // attivare l'hover del button submit solo se il set e' composto da 4 colori
+// color picker al click del dot
+// selezionare il numero di colori all'inizio
+// cambiare sfondo
+// fare le mosse codificate nell'url, per salvare le partite
+// cambiare sfondo
 
 $(document).ready(function () {
 
@@ -131,6 +136,9 @@ function answerTry(arrayAns) {
 */
 
 function newTry() {
+  // dots = document.getElementsByClassName('try dot');
+  // for (i = dots.length - 8; i < dots.length - 4; i++)
+  //   dots[i].onclick = null;
   movesC = document.getElementById("movesContainer");
   dotsC = document.createElement("OL");
 
