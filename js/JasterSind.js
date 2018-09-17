@@ -16,7 +16,9 @@ function dotClick (e) {
   if (colIx == -1)
     colIx = (e.shiftKey) ? n_colors - 1: 0;
   else
-    colIx = lastGuess[dotNumber] + ((e.shiftKey)?-1:1) + n_colors;
+    // tentativo con pulsante destro e centrale non funziona
+    // colIx = lastGuess[dotNumber] + ((e.shiftKey || e.which == 3 || e.which == 3) ? -1 : 1) + n_colors;
+    colIx = lastGuess[dotNumber] + ((e.shiftKey) ? -1 : 1) + n_colors;
   lastGuess[dotNumber] = colIx % n_colors;
   $(this).animate({ backgroundColor: colorsList[colIx % n_colors] }, 200, "swing");
 
@@ -47,7 +49,7 @@ $(document).ready(function () {
   });
   //
 
-  newTry();
+  newTry(false);
 
   // add submit button dinamically at startup
   dotsC = document.getElementById("move"+(N-1));
@@ -99,6 +101,7 @@ function check (trg, gss) {
 function submit () {
   if (lastGuess.indexOf(-1) != -1)
     return;
+
   chk = check(configuration, lastGuess);
   // colorare i pallini...
   console.log(chk);
@@ -109,8 +112,14 @@ function submit () {
     $("#solutionContainer").animate({ opacity: '1' }, 500, "swing");
     $("#title").animate({ opacity: '0' }, 500, "swing");
     $("#submit").animate({ opacity: '0' }, 200, "swing");
-
-    window.scrollTo(0,document.body.scrollHeight);
+    
+    win_msg = document.createElement("DIV");
+    win_msg.classList = "win_message";
+    tries = $('.try.dot').length/4;
+    win_msg.innerHTML = "Congrats, you found the combination in " + tries + " tries!";
+    dotsC.appendChild(win_msg);
+    
+    // window.scrollTo(0,document.body.scrollHeight);
     //
   } else {
     lastGuess = [-1, -1, -1, -1];
@@ -135,10 +144,12 @@ function answerTry(arrayAns) {
 }
 */
 
-function newTry() {
-  // dots = document.getElementsByClassName('try dot');
-  // for (i = dots.length - 8; i < dots.length - 4; i++)
-  //   dots[i].onclick = null;
+function newTry(notFirst=true) {
+  // if(notFirst) {
+  //   var dots = $('.try.dot');
+  //   for (i = dots.length - 8; i < dots.length - 4; i++)
+  //     dots[i].onclick = null;
+  // }
   movesC = document.getElementById("movesContainer");
   dotsC = document.createElement("OL");
 
