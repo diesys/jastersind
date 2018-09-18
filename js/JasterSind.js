@@ -30,8 +30,8 @@ function dotClick (e) {
 // color picker al click del dot
 // selezionare il numero di colori all'inizio
 // cambiare sfondo
-// fare le mosse codificate nell'url, per salvare le partite
-// cambiare sfondo
+// fare le mosse codificate nell'url, per salvare le partite e per continuarle
+// logo mobile messo meglio dopo la vittoria
 
 $(document).ready(function () {
 

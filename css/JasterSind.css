@@ -156,7 +156,7 @@ a.button_submit:hover {
   border-radius: 10px;
   padding-top: 2px;
   margin: 0;
-  opacity: 0;
+  opacity: .7;
   /* opacity: 1; */
   /* border-radius: 30px; */
   /* border: 2px solid rgba(20, 20, 20, .3); */
@@ -197,23 +197,38 @@ a.button_submit:hover {
     margin: 0;
     margin-top: 0px;
     padding: 0;
-    margin-left: 0;
+    margin-left: 3px;
     min-width: 260px;
-    left: 57%;
+    left: 54%;
+  }
+  ol.movesContainer {
+    margin-top: 30px;
   }
   #gameboard {
     width: auto;
-    margin-top: 90px;
+    margin-top: 40px;
   }
   a.button_submit_inline,
   a.button_submit {
-    left: 36%;
+    left: 40%;
     top: 45px;
     margin-left: 0px;
   }
   .dot {
     margin: 8px;
     padding: 4px;
+  }
+  #title {
+    max-width: 120px;
+    min-width: 100px;
+    padding-left: 10px;
+    padding-top: 2px;
+    position: absolute;
+    left: 26%;
+    top: 20px;
+  }
+  #solutionContainer {
+    padding-left: 125px;
   }
 }
 
