@@ -25,7 +25,7 @@ function dotClick (e) {
 }
 
 // TODO
-// 
+//
 // attivare l'hover del button submit solo se il set e' composto da 4 colori
 // color picker al click del dot
 // selezionare il numero di colori all'inizio
@@ -49,7 +49,7 @@ $(document).ready(function () {
   });
   //
 
-  newTry(false);
+  newTry();
 
   // add submit button dinamically at startup
   dotsC = document.getElementById("move"+(N-1));
@@ -120,7 +120,7 @@ function submit () {
     $("#title").css({"transform": "none"}).animate({left: "0px", transform: "none"}, 500, "swing");
     $("#submit").animate({ opacity: '0' }, 200, "swing");
     $(".win_message").animate({ opacity: '1' }, 800, "swing");
-    
+
     // window.scrollTo(0,document.body.scrollHeight);
     //
   } else {
@@ -146,12 +146,15 @@ function answerTry(arrayAns) {
 }
 */
 
-function newTry(notFirst=true) {
-  // if(notFirst) {
-  //   var dots = $('.try.dot');
-  //   for (i = dots.length - 8; i < dots.length - 4; i++)
-  //     dots[i].onclick = null;
-  // }
+function newTry() {
+
+  // disable click on past tries
+  const dots = document.getElementsByClassName('try dot');
+  if (dots.length)
+    for (i = dots.length - 4; i < dots.length; i++)
+      dots[i].onclick = null;
+  //
+
   movesC = document.getElementById("movesContainer");
   dotsC = document.createElement("OL");
 
