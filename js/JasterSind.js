@@ -111,7 +111,7 @@ function submit () {
     win_msg = document.createElement("DIV");
     win_msg.classList = "win_message";
     tries = $('.try.dot').length/4;
-    win_msg.innerHTML = "Congrats, you found the combination in " + ((tries == 1) ? '1 try!' : tries + 'tries!');
+    win_msg.innerHTML = "Congrats, you found the combination in " + ((tries == 1) ? '1 try!' : tries + ' tries!');
     dotsC.appendChild(win_msg);
 
     // $("").fadeIn( "slow", function() {});
