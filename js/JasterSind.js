@@ -33,40 +33,6 @@ function dotClick (e) {
   $(this).animate({ backgroundColor: colorsList[colIx % n_colors] }, 200, "swing");
 }
 
-////////////////////////////////////// MAIN ///////////////////////////
-
-$(document).ready(function () {
-
-  $('.try.dot').bind("click", dotClick);
-
-  // genera la combinazione da indovinare
-  for (i = 0; i < 4; i++)
-    configuration.push(Math.floor(Math.random() * n_colors));
-
-  // $('.dot.sol').each(function () {
-  //   dotNumber = parseInt(this.id.split('l')[1]);
-  //   var clr = colorsList[configuration[dotNumber]];
-  //   $(this).css('background-color', clr);
-  // });
-
-  newTry();
-
-  // add submit button dinamically at startup
-  dotsC = document.getElementById("move"+(N-1));
-
-  btn = document.createElement("A");
-  btn.id = "submit";
-  btn.onclick = submit;
-
-  btnchk = document.createElement("I")
-  btnchk.className = "checkBtn circle";
-  btnchk.innerHTML = "&#x2714;";
-
-  btn.appendChild(btnchk);
-  dotsC.appendChild(btn);
-
-});
-
 function getUrlVars() {
   var vars = {};
   var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
@@ -167,8 +133,22 @@ function newTry() {
     ansC.appendChild(ansC_sub);
   }
   dotsC.appendChild(ansC);
-  if (N) dotsC.appendChild(document.getElementById("submit"));
+  // if (N) dotsC.appendChild(document.getElementById("submit"));
+  if (N) {
+    // dotsC = document.getElementById("move" + (N - 1));
 
+    btn = document.createElement("A");
+    btn.id = "submit";
+    btn.onclick = submit;
+
+    btnchk = document.createElement("I")
+    btnchk.className = "checkBtn circle";
+    btnchk.innerHTML = "&#x2714;";
+
+    btn.appendChild(btnchk);
+    dotsC.appendChild(btn);
+  }
+  
   N++;
 }
 
@@ -190,3 +170,50 @@ function showRes (res) {
     dotN++;
   }
 }
+
+function createGame(n_colors, show = false) {
+  // genera la combinazione da indovinare
+  configuration = []
+
+  for (i = 0; i < 4; i++)
+    configuration.push(Math.floor(Math.random() * n_colors));
+
+  if (show) // colora/mostra la soluzione (sotto il div nascosto) 
+    $('.dot.sol').each(function () {
+      dotNumber = parseInt(this.id.split('l')[1]);
+      var clr = colorsList[configuration[dotNumber]];
+      $(this).css('background-color', clr);
+    });
+  
+  // cleans the current game
+  let element = document.querySelector('#movesContainer');
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
+
+  newTry();
+
+  // add submit button dinamically at startup
+  // dotsC = document.getElementById("move" + (N - 1));
+
+  // btn = document.createElement("A");
+  // btn.id = "submit";
+  // btn.onclick = submit;
+
+  // btnchk = document.createElement("I")
+  // btnchk.className = "checkBtn circle";
+  // btnchk.innerHTML = "&#x2714;";
+
+  // btn.appendChild(btnchk);
+  // dotsC.appendChild(btn);
+}
+
+////////////////////////////////////// MAIN ///////////////////////////
+
+$(document).ready(function () {
+
+  $('.try.dot').bind("click", dotClick);
+  
+  // createGame()
+
+});
