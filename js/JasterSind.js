@@ -88,6 +88,9 @@ function submit () {
     $("#submit").attr('style', 'display: none');
     $(".win_message").animate({ opacity: '1' }, 800, "swing");
 
+    // hides the menu
+    $('#clr_select').show()
+
   } else {
     lastGuess = [-1, -1, -1, -1];
     newTry();
@@ -134,7 +137,7 @@ function newTry() {
   }
   dotsC.appendChild(ansC);
   // if (N) dotsC.appendChild(document.getElementById("submit"));
-  if (N) {
+  if (N>=0) {
     // dotsC = document.getElementById("move" + (N - 1));
 
     btn = document.createElement("A");
@@ -186,34 +189,21 @@ function createGame(n_colors, show = false) {
     });
   
   // cleans the current game
-  let element = document.querySelector('#movesContainer');
-  while (element.firstChild) {
-    element.removeChild(element.firstChild);
+  $('#movesContainer').empty()
+  // creates a new one
+  newTry();
+  // hides the menu
+  $('#clr_select').hide()
+  // hides the win_message
+  if ($('.win_message')) {
+    $('.win_message').hide()
+    $('#solutionContainer').addClass("hidden")
   }
 
-  newTry();
-
-  // add submit button dinamically at startup
-  // dotsC = document.getElementById("move" + (N - 1));
-
-  // btn = document.createElement("A");
-  // btn.id = "submit";
-  // btn.onclick = submit;
-
-  // btnchk = document.createElement("I")
-  // btnchk.className = "checkBtn circle";
-  // btnchk.innerHTML = "&#x2714;";
-
-  // btn.appendChild(btnchk);
-  // dotsC.appendChild(btn);
 }
 
 ////////////////////////////////////// MAIN ///////////////////////////
 
 $(document).ready(function () {
-
   $('.try.dot').bind("click", dotClick);
-  
-  // createGame()
-
 });
