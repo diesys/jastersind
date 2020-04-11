@@ -43,11 +43,11 @@ $(document).ready(function () {
   for (i = 0; i < 4; i++)
     configuration.push(Math.floor(Math.random() * n_colors));
 
-  $('.dot.sol').each(function () {
-    dotNumber = parseInt(this.id.split('l')[1]);
-    var clr = colorsList[configuration[dotNumber]];
-    $(this).css('background-color', clr);
-  });
+  // $('.dot.sol').each(function () {
+  //   dotNumber = parseInt(this.id.split('l')[1]);
+  //   var clr = colorsList[configuration[dotNumber]];
+  //   $(this).css('background-color', clr);
+  // });
 
   newTry();
 
