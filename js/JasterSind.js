@@ -33,6 +33,7 @@ function dotClick (e) {
   $(this).animate({ backgroundColor: colorsList[colIx % n_colors] }, 200, "swing");
 }
 
+
 function getUrlVars() {
   var vars = {};
   var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
@@ -174,10 +175,29 @@ function showRes (res) {
   }
 }
 
+function dotClick2(e) {
+  // which dot am I?
+  // dotNumber = parseInt(this.id.split('d')[1]);
+  $(this).addClass('active')
+
+  // colIx = lastGuess[dotNumber];
+  // il caso iniziale va trattato, ahimè, a parte
+  // if (colIx == -1)
+  //   colIx = (e.shiftKey) ? n_colors - 1 : 0;
+  // else
+  // tentativo con pulsante destro e centrale non funziona
+  // colIx = lastGuess[dotNumber] + ((e.shiftKey || e.which == 3 || e.which == 3) ? -1 : 1) + n_colors;
+  // colIx = lastGuess[dotNumber] + ((e.shiftKey) ? -1 : 1) + n_colors;
+  // lastGuess[dotNumber] = colIx % n_colors;
+  $(this).animate({
+    backgroundColor: colorsList[colIx % n_colors]
+  }, 200, "swing");
+}
+
+
 function createGame(n_colors, show = false) {
   // genera la combinazione da indovinare
   configuration = []
-
   for (i = 0; i < 4; i++)
     configuration.push(Math.floor(Math.random() * n_colors));
 
@@ -187,6 +207,14 @@ function createGame(n_colors, show = false) {
       var clr = colorsList[configuration[dotNumber]];
       $(this).css('background-color', clr);
     });
+
+  // aggiorna il numero e crea la lista tooltip dei colori
+  // DA FARE CON UN FOR, che scorre i colori fino a N_COLORS creando la lista
+  // (il contenitore lo faccio in html prima)
+  ////////////////////////////////////////////////////////////////
+  // newLen = colorsList.length - n_colors
+  // newColors = colorsList.concat([])
+  // newColors = newColors.splice(-n_colors, newLen)
   
   // cleans the current game
   $('#movesContainer').empty()
@@ -205,5 +233,6 @@ function createGame(n_colors, show = false) {
 ////////////////////////////////////// MAIN ///////////////////////////
 
 $(document).ready(function () {
-  $('.try.dot').bind("click", dotClick);
+  // $('.try.dot').bind("click", dotClick);
+  $('.try.dot').bind("click", dotClick2);
 });
