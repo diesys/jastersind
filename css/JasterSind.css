@@ -37,7 +37,7 @@ ol.movesContainer {
 }
 
 ol.dotsContainer, ol.movesContainer {
-  margin: 0 0 10px 0;
+  margin: 0 0 5px 0;
   flex-direction: row;
   padding: 0;
   transition: all .5s;
@@ -91,7 +91,7 @@ ol.movesContainer {
   background: rgba(0, 0, 0, .2);
   border: 1px solid rgba(5, 5, 5, .5);
   margin: 12px;
-  padding: 4px;
+  padding: 6px;
   display: inline-block;
 }
 .checkBtn {
@@ -103,7 +103,7 @@ ol.movesContainer {
   color: #888;
   transition: .4s .1s;
   cursor: pointer;
-  padding: 2px 10px;
+  padding: 10px 18px;
   display: inline-block;
   vertical-align: middle;
   text-align: center;
@@ -124,7 +124,7 @@ ol.movesContainer {
 .dot_answ {
   width: 10px;
   height: 10px;
-  margin: 2px 4px;
+  margin: 4px 4px;
   padding: 4px;
 }
 #solutionContainer.dotsContainer {
@@ -174,18 +174,35 @@ ol.movesContainer {
 
 select#clr_select {
   text-align: center;
-  bottom: 10px;
+  bottom: 15px;
   position: fixed;
   align-self: center;
+  font-size: 1em;
+  background: #000000a0;
+  color: #ddd;
+  border: none;
+  padding: .5em;
+  border-radius: 5px;
+  box-shadow: 0 2px 20px 2px rgba(0, 0, 0, .5);
+  transition: all .7s;
+}
+select:disabled#clr_select {
+  transition: all 1s .5s;
+  color: #888;
+  box-shadow: 0 2px 10px 0px rgba(0, 0, 0, .5);
 }
 
 @media only screen and (max-width: 700px) {
   .dot {
     margin: 8px;
-    padding: 6px;
+    padding: 10px;
   }
   .dot_answ {
     margin: 2px 4px;
-    padding: 4px;
+    padding: 5px;
+  }
+  .checkBtn {
+    font-size: 35px;
+    padding: 8px 18px;
   }
 }
