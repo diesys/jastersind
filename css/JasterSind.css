@@ -175,6 +175,7 @@ ol.movesContainer {
 @media only screen and (max-width: 700px) {
   .dot {
     margin: 8px;
+    padding: 6px;
   }
   .dot_answ {
     margin: 2px 4px;
