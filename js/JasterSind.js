@@ -1,6 +1,15 @@
+// TODO
+//
+// attivare l'hover del button submit solo se il set e' composto da 4 colori
+// color picker al click del dot
+// selezionare il numero di colori all'inizio
+// cambiare sfondo
+// fare le mosse codificate nell'url, per salvare le partite e per continuarle
+// logo mobile messo meglio dopo la vittoria
+
 var colorsList = ["#f73030", "#f7d843", "#69e569", "#406df6", "#9351d3", "#db46be", "#ec8c34", "#36e1ec", "#f4f4f4"]; //, "#1f1f1f"];
 // var colorsListM = ["#F23553", "#F7D843", "#69E569", "#406DF6", "#9351D3", "#DB46BE", "#EC8C34", "#36E1EC", "#ECECEC"];//, "#1F1F1F"];
-var answerCol = ["#f23553", "#ffffff"];
+var answerCol = [colorsList[0], "#ffffff"];
 var n_colors = 9;
 var configuration = [];
 var lastGuess = [-1, -1, -1, -1];
@@ -10,6 +19,7 @@ var N = 0;
 function dotClick (e) {
   // which dot am I?
   dotNumber = parseInt(this.id.split('d')[1]);
+  $(this).addClass('active')
 
   colIx = lastGuess[dotNumber];
   // il caso iniziale va trattato, ahimè, a parte
@@ -21,17 +31,9 @@ function dotClick (e) {
     colIx = lastGuess[dotNumber] + ((e.shiftKey) ? -1 : 1) + n_colors;
   lastGuess[dotNumber] = colIx % n_colors;
   $(this).animate({ backgroundColor: colorsList[colIx % n_colors] }, 200, "swing");
-
 }
 
-// TODO
-//
-// attivare l'hover del button submit solo se il set e' composto da 4 colori
-// color picker al click del dot
-// selezionare il numero di colori all'inizio
-// cambiare sfondo
-// fare le mosse codificate nell'url, per salvare le partite e per continuarle
-// logo mobile messo meglio dopo la vittoria
+////////////////////////////////////// MAIN ///////////////////////////
 
 $(document).ready(function () {
 
@@ -41,13 +43,11 @@ $(document).ready(function () {
   for (i = 0; i < 4; i++)
     configuration.push(Math.floor(Math.random() * n_colors));
 
-  // !!temporaneamente visualizzo la soluzione, poi da cancellare
-  $('.dot.sol').each(function(){
+  $('.dot.sol').each(function () {
     dotNumber = parseInt(this.id.split('l')[1]);
     var clr = colorsList[configuration[dotNumber]];
     $(this).css('background-color', clr);
   });
-  //
 
   newTry();
 
@@ -56,19 +56,14 @@ $(document).ready(function () {
 
   btn = document.createElement("A");
   btn.id = "submit";
-  // btn.classList = "button_submit";
-  btn.classList = "button_submit_inline";
   btn.onclick = submit;
-  //btn.href = "";
 
   btnchk = document.createElement("I")
-  btnchk.classList = "fa fa-check fa-lg";
+  btnchk.className = "checkBtn circle";
+  btnchk.innerHTML = "&#x2714;";
 
   btn.appendChild(btnchk);
   dotsC.appendChild(btn);
-  // $(body).appendChild(btn);
-
-  // console.log('actual configuration: ', configuration);
 
 });
 
@@ -103,57 +98,43 @@ function submit () {
     return;
 
   chk = check(configuration, lastGuess);
-  // colorare i pallini...
-  console.log(chk);
   showRes(chk);
   if (chk[0] == 4) {
+    // colora la soluzione
+    $('.dot.sol').each(function () {
+      dotNumber = parseInt(this.id.split('l')[1]);
+      var clr = colorsList[configuration[dotNumber]];
+      $(this).css('background-color', clr);
+    });
     // mag section
     win_msg = document.createElement("DIV");
     win_msg.classList = "win_message";
     tries = $('.try.dot').length/4;
     win_msg.innerHTML = "Congrats, you found the combination in " + ((tries == 1) ? '1 try!' : tries + ' tries!');
-    dotsC.appendChild(win_msg);
+    document.querySelector('#gameboard').appendChild(win_msg);
 
     // $("").fadeIn( "slow", function() {});
-    $("#solutionContainer").animate({ opacity: '1' }, 500, "swing");
+    // $("#solutionContainer").animate({ opacity: '1' }, 500, "swing");
+    $("#solutionContainer").removeClass('hidden');
     // $("#title").animate({ opacity: '0' }, 500, "swing");
-    $("#title").css({"transform": "none"}).animate({left: "0px", transform: "none"}, 500, "swing");
+    // $("#title").css({"transform": "none"}).animate({left: "0px", transform: "none"}, 500, "swing");
     $("#submit").animate({ opacity: '0' }, 200, "swing");
+    $("#submit").attr('style', 'display: none');
     $(".win_message").animate({ opacity: '1' }, 800, "swing");
 
-    // window.scrollTo(0,document.body.scrollHeight);
-    //
   } else {
     lastGuess = [-1, -1, -1, -1];
     newTry();
   }
 }
 
-
-//funzione risposta pallini rossi/bianchi rispetto alla soluzione
-/*
-function answerTry(arrayAns) {
-  var i;
-  for(i = 0; i<arrayAns.length; i = i+1){
-    if(arrayAns[i]==0)
-      console.log()
-    if(arrayAns[i]==1)
-      console.log()
-    else
-      console.log()
-  }
-  return arrayResult.sort();
-}
-*/
-
 function newTry() {
-
   // disable click on past tries
   const dots = document.getElementsByClassName('try dot');
   if (dots.length)
     for (i = dots.length - 4; i < dots.length; i++)
       dots[i].onclick = null;
-  //
+
 
   movesC = document.getElementById("movesContainer");
   dotsC = document.createElement("OL");
@@ -171,7 +152,7 @@ function newTry() {
   movesC.appendChild(dotsC);
 
   ansC = document.createElement("DIV");
-  ansC.classList = "answer";
+  ansC.classList = "answer hidden";
 
   for (i = 0; i < 2; i++) {
     ansC_sub = document.createElement("OL");
@@ -191,18 +172,21 @@ function newTry() {
   N++;
 }
 
-
+// fare meglio!!! con le classi css...
 function showRes (res) {
   dotN = 0
-  $('.answer').animate({ opacity: '1'}, 500, "swing");
+  $('.answer.hidden').removeClass("hidden");
+  $('.answer').animate({ opacity: '1'}, 800, "swing");
   for (i = 0; i < res[0]; i++) {
     //clr and pos
     $('#a'+(N-1)+'2d'+dotN).animate({ backgroundColor: answerCol[0]}, 500, "swing");
+    $('#a' + (N - 1) + '2d' + dotN).addClass('active')
     dotN++;
   }
   for (i = 0; i < res[1]; i++) {
     //clr
     $('#a'+(N-1)+'2d'+dotN).animate({ backgroundColor: answerCol[1]}, 500, "swing");
+    $('#a' + (N - 1) + '2d' + dotN).addClass('active')
     dotN++;
   }
 }

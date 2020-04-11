@@ -2,17 +2,15 @@
 <html>
 
 <head>
-  <meta name="generator" content="Hugo 0.30" />
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-
   <title>JasterSind</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="JS Mastermind">
+  <meta name="description" content="A simple JS MasterMind">
   <meta name="author" content="Diego Turtulici">
   <meta name="keywords" content="master mind mastermind js javascript html css web game app">
-  <link rel="canonical" href="http://flowin.space/quite/">
+  <link rel="canonical" href="http://flowin.space/jastersind/">
 
 
   <meta name="HandheldFriendly" content="true" />
@@ -34,78 +32,34 @@
   <!-- <link rel="icon" sizes="72x72" href="http://flowin.space/quite/images/favicon72.png" type="image/x-icon">
   <link rel="icon" sizes="256x256" href="http://flowin.space/quite/images/favicon256.png" type="image/x-icon"> -->
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   <!-- <link rel="stylesheet" type="text/css" href="css/fontawesome.min.css" /> -->
   <link rel="stylesheet" type="text/css" href="css/JasterSind.css">
   
   <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
   <script type="text/javascript" src="js/jquery.color.js"></script>
   <script type="text/javascript" src="js/JasterSind.js"></script>
-  
-  <!-- <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/raleway" type="text/css" /> -->
-  <!-- <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/source-code-pro" type="text/css" /> -->
-
 
 </head>
 
 <body class="">
 
   <header>
-    <img src="img/jastersind_hor.png" alt="JasterSind" id="title"/>
-  </header>
+    <img src="img/jastersind_line.png" alt="JasterSind logo" id="title"/>
 
-  <div id="gameboard">
-
-    <ol id="solutionContainer" class="dotsContainer">
+    <ol id="solutionContainer" class="dotsContainer hidden">
       <li id="sol0" class="sol dot"></li>
       <li id="sol1" class="sol dot"></li>
       <li id="sol2" class="sol dot"></li>
       <li id="sol3" class="sol dot"></li>
     </ol>
+  </header>
 
-    <ol id="movesContainer" class="movesContainer">
-      <!--
-      <ol id="move1" class="dotsContainer">
-        <li id="m1d1" class="try dot"></li>
-        <li id="m1d2" class="try dot"></li>
-        <li id="m1d3" class="try dot"></li>
-        <li id="m1d4" class="try dot"></li>
+  <div id="gameboard">
 
-
-        <div class="answer">
-          <div class="answer_l1">
-            <li id="a12d1" class="dot_answ"></li>
-            <li id="a12d2" class="dot_answ"></li>
-          </div>
-          <div class="answer_l2">
-            <li id="a12d3" class="dot_answ"></li>
-            <li id="a12d4" class="dot_answ"></li>
-          </div>
-        </div>
-
-        <a class="button_submit" href="">
-        <a class="button_submit_inline" href="">
-            <i class="fa fa-check fa-lg"></i>
-        </a>
-
-
-      </ol>
-      !-->
-
-
-    </ol>
-
-
+    <ol id="movesContainer" class="movesContainer"></ol>
 
   </div>
-
-  <!-- <div id="win_message">Congrats!</div> -->
-
-  <!-- Mag section
-  <h1><font class="mag" style="font-family:courier;display: none;" color="#7E7EFF">Mi complimento!</font></h1>
-  <img class="mag" src="img/m.jpg" alt="" style="display: none;"> 
-  -->
-
 
   <!-- <footer class="footer">
 
@@ -117,9 +71,6 @@
           <a href="https://eigenlab.org" target="_blank">eigenLab</a>
 
   </footer> -->
-
-
-    <script></script>
 
 </body>
 
