@@ -139,7 +139,7 @@ function newTry() {
   // if (N) dotsC.appendChild(document.getElementById("submit"));
   if (N>=0) {
     // dotsC = document.getElementById("move" + (N - 1));
-
+    $('#submit').remove();
     btn = document.createElement("A");
     btn.id = "submit";
     btn.onclick = submit;
