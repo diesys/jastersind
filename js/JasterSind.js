@@ -52,7 +52,6 @@ function submit () {
 
   // hai vinto!
   if (chk[0] == 4) {
-
     // message section
     win_msg = document.createElement("DIV");
     win_msg.classList = "win_message";
@@ -77,11 +76,17 @@ function submit () {
 }
 
 function newTry() {
+  // hides the color menu
+  $('#color_popup').addClass('hidden')
   // disable click on past tries
-  const dots = document.getElementsByClassName('try dot');
-  if (dots.length)
-    for (i = dots.length - 4; i < dots.length; i++)
+  const dots = document.querySelectorAll('.try.dot');
+  if (dots.length) {
+    for (i = dots.length - 4; i < dots.length; i++) {
+      dots[i].classList.add('unclickable')
+      dots[i].classList.remove('selected')
       dots[i].onclick = null;
+    }
+  }
 
   dotsC = document.createElement("OL");
 
@@ -176,13 +181,15 @@ function changeColor(e) {
   // console.log(e)
   if(e) {
     clickedID = parseInt(e.explicitOriginalTarget.id.split('-')[1])
-    // change the color of the lastClicked dot with the clicked color from menu
-    $(game['lastClicked']).animate({
-      backgroundColor: game['colors'][clickedID]
-    }, 200, "swing");
-    // element clicked wich opened the menu
-    $(game['lastClicked']).addClass('active')
-    game['currGuess'][game['lastClicked'].split('d')[1]] = clickedID;
+    if(!$(game['lastClicked']).hasClass('unclickable')) {
+      // change the color of the lastClicked dot with the clicked color from menu
+      $(game['lastClicked']).animate({
+        backgroundColor: game['colors'][clickedID]
+      }, 200, "swing");
+      // element clicked wich opened the menu
+      $(game['lastClicked']).addClass('active')
+      game['currGuess'][game['lastClicked'].split('d')[1]] = clickedID;
+    }
   }
 }
 

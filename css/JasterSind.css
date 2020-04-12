@@ -1,8 +1,9 @@
 /* ANIMATIONS */
 @keyframes fadein {
-  0%     {display: none}
-  0.001% {opacity: 0;}
-  100%   {opacity: 1;}
+  0%      {display: none}
+  0.001%  {opacity: 0;}
+  100%    {opacity: 1;}
+  /* 100%   {display: block} */
 }
 /* ANIMATIONS */
 
@@ -227,8 +228,6 @@ select:disabled#clr_select {
 }
 
 #color_popup.hidden {
-  opacity: 0;
-  /* display: none; */
   animation: fadein 1s reverse;
 }
 
