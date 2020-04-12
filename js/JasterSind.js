@@ -6,12 +6,12 @@
 // fare le mosse codificate nell'url, per salvare le partite e per continuarle
 
 
-var colorsList = ["#f73030", "#f7d843", "#69e569", "#406df6", "#9351d3", "#db46be", "#ec8c34", "#36e1ec", "#f4f4f4"];
+// var colorsList = ["#f73030", "#f7d843", "#69e569", "#406df6", "#9351d3", "#db46be", "#ec8c34", "#36e1ec", "#f4f4f4"];
+// var n_colors = 9;
 var answerCol = ['#df0e0e', "#ffffff"];
-var n_colors = 9;
 var game = [];
     game['solution'] = [],
-    game['colors'] = colorsList,
+    game['colors'] = [],
     game['currGuess'] = [-1, -1, -1, -1];
     game['lastClicked'] = "#null";
 
