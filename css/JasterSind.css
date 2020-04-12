@@ -237,6 +237,9 @@ select:disabled#clr_select {
     margin: 8px;
     padding: 10px;
   }
+  .dot.selected {
+    padding: 9px;
+  }
   .dot_answ {
     margin: 2px 4px;
     padding: 5px;
