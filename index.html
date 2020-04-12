@@ -30,7 +30,7 @@
 
   <link rel="stylesheet" type="text/css" href="css/JasterSind.min.css">
   <!-- <link rel="stylesheet" type="text/css" href="css/JasterSind.css"> -->
-  
+
   <script type="text/javascript" src="js/jquery-3.3.1.min.js" defer></script>
   <script type="text/javascript" src="js/jquery.color.min.js" defer></script>
   <script type="text/javascript" src="js/JasterSind.min.js" defer></script>
@@ -41,7 +41,7 @@
 <body class="">
 
   <header>
-    <img src="img/jastersind_line.png" alt="JasterSind logo" id="title"/>
+    <img src="img/jastersind_line.png" alt="JasterSind logo" id="title" />
 
     <ol id="solutionContainer" class="dotsContainer hidden">
       <li id="sol0" class="sol dot"></li>
@@ -58,18 +58,60 @@
     <ol id="color_popup" class="hidden"></ol>
   </div>
 
+  <div id="menu">
 
-  <select name="colors" id="clr_select" onchange="createGame(this.value)">
-    <option value="7" selected disabled>New game with how many colors?</option>
-    <option value="3">4 colors</option>
-    <option value="4">4 colors</option>
-    <option value="5">5 colors</option>
-    <option value="6">6 colors</option>
-    <option value="7">7 colors</option>
-    <option value="8">8 colors</option>
-    <option value="9">9 colors</option>
-    <option value="10">10 colors</option>
-  </select>
+    <select name="colors" id="clr_select" onchange="createGame(this.value)">
+      <option value="7" selected disabled>New game with..</option>
+      <option value="2">2 colors</option>
+      <option value="3">3 colors</option>
+      <option value="4">4 colors</option>
+      <option value="5">5 colors</option>
+      <option value="6">6 colors</option>
+      <option value="7">7 colors</option>
+      <option value="8">8 colors</option>
+      <option value="9">9 colors</option>
+      <option value="10">10 colors</option>
+    </select>
+    
+    <a class="btn modal" href="#howto" id="credits">Help?</a>
+
+  </div>
+
+  <div id="howtos" class="modal container hidden">
+    
+    <div id="howto" class="modal panel hidden">
+      <a class="btn modal close" href="#close">&#x1f7ac;</a>
+      <!-- <img src="img/logo.png" alt="MinHex logo" /> -->
+      <h1>Are you a <i>Master Mind</i>?</h1>
+      <p>
+        The original <a href="https://en.wikipedia.org/wiki/Mastermind_(board_game)" target="_blank"><i>Master Mind</i></a> is essentially a code-breaking game for two players (here one is the computer).<br> 
+        <br>The game selects some random colors (choose how many to start new game).<br>
+        Your goal is to guess what the game randomly chose! <br>
+        <h3>How?</h3>
+        Before you there are 4 empty slots, click on them to choose your color combination, then submit with the button on the right.<br>
+        <br>The computer gives you an answer trough 4 smaller dots beside your previous guess:
+        <ul>
+          <li><i>Red dot(s)</i>: you positioned well that many colors</li>
+          <li><i>White dot(s)</i>: you chose well that many colors (but in the wrong position)</li>
+        </ul>
+        Example: <ul>
+            <li>
+              If you get 4 white dots that means that you only have to rearrange the colors of your last guess. 
+            </li>
+            <li>
+              If you get 4 red dots... you won! You're a Mastermind!
+            </li>
+        </ul> 
+        <br><br><br> <i>Jaster Sind</i> is a simple <i>JS</i> (JavaScript) rewriting of the original game.
+        <br>The <a target="_blank" href="https://git.eigenlab.org/sbiego/JasterSind">source code</a> is licensed with: <a
+            target="_blank" href="https://www.gnu.org/licenses/agpl-3.0.en.html">AGPLv3</a>, a free licence.
+        <br><br>
+        Hosting: <a target="_blank" href="https://eigenlab.org">eigenLab</a> @ <a target="_blank"
+          href="https://flowin.space">FlowIn.Space</a>
+      </p>
+    </div>
+  </div>
+
   <!-- <footer class="footer">
 
           Powered by
