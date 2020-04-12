@@ -1,9 +1,8 @@
 /* ANIMATIONS */
 @keyframes fadein {
-  0%      {display: none}
-  0.001%  {opacity: 0;}
-  100%    {opacity: 1;}
-  /* 100%   {display: block} */
+  0%     {display: none}
+  0.001% {opacity: 0;}
+  100%   {opacity: 1;}
 }
 /* ANIMATIONS */
 
@@ -46,7 +45,7 @@ ol.movesContainer {
 }
 
 ol.movesContainer > ol.dotsContainer {
-  animation: fadein 1s;
+  animation: fadein .8s;
 }
 
 ol.dotsContainer, ol.movesContainer {
@@ -224,10 +223,14 @@ select:disabled#clr_select {
   border-radius: 3em;
   box-shadow: 2px 0px 20px rgba(5, 5, 5, .5);
   justify-content: center;
-  animation: fadein 1s;
+  animation: fadein .7s;
 }
-
+#color_popup > li {
+  animation: fadein .6s .4s;
+}
 #color_popup.hidden {
+  opacity: 0;
+  /* display: none; */
   animation: fadein 1s reverse;
 }
 
@@ -253,6 +256,10 @@ select:disabled#clr_select {
     padding: 10px 0;
     flex-wrap: wrap;
     justify-content: space-evenly;
+  }
+  #color_popup.hidden {
+    background: #00000000;
+    box-shadow: none;
   }
   #gameboard {
     width: 100%;
