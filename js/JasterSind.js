@@ -1,49 +1,28 @@
 // TODO
 //
+// fare howto da minhex
 // attivare l'hover del button submit solo se il set e' composto da 4 colori
-// color picker al click del dot
 // cambiare sfondo
 // fare le mosse codificate nell'url, per salvare le partite e per continuarle
 
 
 var colorsList = ["#f73030", "#f7d843", "#69e569", "#406df6", "#9351d3", "#db46be", "#ec8c34", "#36e1ec", "#f4f4f4"];
-var answerCol = [colorsList[0], "#ffffff"];
+var answerCol = ['#df0e0e', "#ffffff"];
 var n_colors = 9;
 var game = [];
     game['solution'] = [],
     game['colors'] = colorsList,
     game['currGuess'] = [-1, -1, -1, -1];
-    game['lastClicked'] = "#";
+    game['lastClicked'] = "#null";
 
 var movesC = document.getElementById("movesContainer");
-
-
 var N = 0;
-
-// function dotClick (e) {
-//   // which dot am I?
-//   dotNumber = parseInt(this.id.split('d')[1]);
-//   $(this).addClass('active')
-
-//   colIx = game['currGuess'][dotNumber];
-//   // il caso iniziale va trattato, ahimè, a parte
-//   if (colIx == -1)
-//     colIx = (e.shiftKey) ? n_colors - 1: 0;
-//   else
-//     // tentativo con pulsante destro e centrale non funziona
-//     // colIx = game['currGuess'][dotNumber] + ((e.shiftKey || e.which == 3 || e.which == 3) ? -1 : 1) + n_colors;
-//     colIx = game['currGuess'][dotNumber] + ((e.shiftKey) ? -1 : 1) + n_colors;
-//   game['currGuess'][dotNumber] = colIx % n_colors;
-//   $(this).animate({ backgroundColor: colorsList[colIx % n_colors] }, 200, "swing");
-// }
-
 
 function getUrlVars() {
   var vars = {};
   var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
     vars[key] = value;
-  });
-  return vars;
+  }); return vars;
 }
 
 function check (trg, gss) {
@@ -69,13 +48,12 @@ function submit () {
     return;
   
   chk = check(game['solution'], game['currGuess']);
-  showRes(chk);
+  checkGuess(chk);
 
   // hai vinto!
   if (chk[0] == 4) {
 
-    
-    // mag section
+    // message section
     win_msg = document.createElement("DIV");
     win_msg.classList = "win_message";
     tries = $('.try.dot').length/4;
@@ -84,12 +62,11 @@ function submit () {
     
     // mostra nasconde il necessario a fine partita
     showSolution()
-    // $("#solutionContainer").removeClass('hidden');
     $("#submit").animate({ opacity: '0' }, 200, "swing");
     $("#submit").attr('style', 'display: none');
     $(".win_message").animate({ opacity: '1' }, 800, "swing");
 
-    // re-enables the color menu
+    // re-enables the color menu for rematch
     $('#clr_select').removeAttr('disabled')
     $('#clr_select').prop("selectedIndex", 0);
 
@@ -138,7 +115,6 @@ function newTry() {
   dotsC.appendChild(ansC);
   
   if (N >= 0) {
-    // dotsC = document.getElementById("move" + (N - 1));
     // da fare meglio? ora cancella il submit e ne ricrea uno...  
     $('#submit').remove();
     btn = document.createElement("A");
@@ -148,16 +124,14 @@ function newTry() {
     btnchk = document.createElement("I")
     btnchk.className = "checkBtn circle";
     btnchk.innerHTML = "&#x2714;";
-
+    // appends elements
     btn.appendChild(btnchk);
     dotsC.appendChild(btn);
-  }
-
-  N++;
+  } N++;
 }
 
 // fare meglio!!! con le classi css...
-function showRes (res) {
+function checkGuess(res) {
   dotN = 0
   $('.answer.hidden').removeClass("hidden");
   $('.answer').animate({ opacity: '1'}, 800, "swing");
@@ -176,17 +150,32 @@ function showRes (res) {
 }
 
 function dotClick(e) {
-  game['lastClicked'] = '#' + e.explicitOriginalTarget.id
+  // not first click => remove selected
+  newClickID = '#' + e.explicitOriginalTarget.id
+  $(newClickID).toggleClass('selected')
+
+  if (game['lastClicked'] != "#null") { // !first click
+    $(game['lastClicked']).removeClass('selected')
+  } else {
+    $(game['lastClicked']).addClass('selected')
+  }
+
+  if (newClickID == game['lastClicked'] && !$('#color_popup').hasClass('hidden')) {
+    $('#color_popup').addClass('hidden')
+  } else {
+    $('#color_popup').removeClass('hidden')
+  }
+
+  // updates the last click
+  game['lastClicked'] = newClickID
   dotNumber = parseInt(this.id.split('d')[1]);
-  $('#color_popup').toggleClass('hidden')
   changeColor()
 }
 
 function changeColor(e) {
   // console.log(e)
-  clickedID = parseInt(e.explicitOriginalTarget.id.split('-')[1])
   if(e) {
-    // colorcli = e.explicitOriginalTarget.attributes['style']['nodeValue'].split(':')[1];
+    clickedID = parseInt(e.explicitOriginalTarget.id.split('-')[1])
     // change the color of the lastClicked dot with the clicked color from menu
     $(game['lastClicked']).animate({
       backgroundColor: game['colors'][clickedID]
@@ -204,6 +193,7 @@ function showSolution() {
     $(this).css('background-color', clr);
   });
   $("#solutionContainer").removeClass('hidden');
+  $("#color_popup").hide()
 }
 
 
