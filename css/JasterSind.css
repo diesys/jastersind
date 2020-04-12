@@ -192,6 +192,27 @@ select:disabled#clr_select {
   box-shadow: 0 2px 10px 0px rgba(0, 0, 0, .5);
 }
 
+#color_popup {
+  /* position: absolute; */
+  background: #000000a0;
+  min-height: 20px;
+  opacity: 1;
+  width: max-content;
+  user-select: auto;
+  transition: opacity .5s;
+  display: flex;
+  padding: 0;
+  border-radius: 3em;
+  box-shadow: 2px 0px 20px rgba(5, 5, 5, .5);
+  justify-content: center;
+}
+
+#color_popup.hidden {
+  opacity: 0;
+  user-select: none;
+  display: none;
+}
+
 @media only screen and (max-width: 700px) {
   .dot {
     margin: 8px;
@@ -204,5 +225,15 @@ select:disabled#clr_select {
   .checkBtn {
     font-size: 35px;
     padding: 8px 18px;
+  }
+  #color_popup {
+    border-radius: 0;
+    width: 100%;
+    padding: 10px 0;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  #gameboard {
+    width: 100%;
   }
 }
