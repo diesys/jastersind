@@ -56,8 +56,7 @@ function submit () {
     win_msg = document.createElement("DIV");
     win_msg.classList = "win_message";
     tries = $('.try.dot').length/4;
-    win_msg.innerHTML = "You're a Mastermind! You found the combination in " + ((tries == 1) ? '1 try' : tries + ' tries') + '!' //', using ' + game['colors'].lenght + ' colors!';
-    console.log(game['colors'].lenght)
+    win_msg.innerHTML = "You're a Mastermind! You found the combination in " + ((tries == 1) ? '1 try' : tries + ' tries') + ', using ' + game['colors']['length'] + ' colors!';
     document.querySelector('#gameboard').appendChild(win_msg);
     
     // mostra nasconde il necessario a fine partita
@@ -157,7 +156,10 @@ function checkGuess(res) {
 
 function dotClick(e) {
   // not first click => remove selected
-  newClickID = '#' + e.explicitOriginalTarget.id
+  // console.log(e)
+  // e ? newClickID = '#' + e.explicitOriginalTarget.id : newClickID = "#null"
+  // e ? newClickID = '#' + e.srcElement.id : newClickID = "#null"
+  newClickID = '#' + e.srcElement.id
   $(newClickID).toggleClass('selected')
 
   if (game['lastClicked'] != "#null") { // !first click
@@ -181,7 +183,7 @@ function dotClick(e) {
 function changeColor(e) {
   // console.log(e)
   if(e) {
-    clickedID = parseInt(e.explicitOriginalTarget.id.split('-')[1])
+    clickedID = parseInt(e.srcElement.id.split('-')[1])
     if(!$(game['lastClicked']).hasClass('unclickable')) {
       // change the color of the lastClicked dot with the clicked color from menu
       $(game['lastClicked']).animate({
