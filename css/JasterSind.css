@@ -43,6 +43,8 @@ a {color: #e24242}
   max-width: 250px;
   padding: 20px;
   z-index: 10;
+  -webkit-app-region: drag;
+  -webkit-user-select: none;
 }
 
 #gameboard,
