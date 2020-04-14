@@ -219,6 +219,7 @@ ol.movesContainer {
   justify-content: center;
   animation: fadein .7s;
   z-index: 5;
+  align-self: center;
 }
 #color_popup > li {
   animation: fadein .6s .4s;

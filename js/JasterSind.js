@@ -181,19 +181,33 @@ function dotClick(e) {
 }
 
 function changeColor(e) {
-  // console.log(e)
+  console.log(e)
+
+  // fix for the transparent element
+  click_on_transp = false
+  // console.log(e.id)
   if(e) {
-    clickedID = parseInt(e.srcElement.id.split('-')[1])
+    if(e.id == 'clr-transparent') {
+      click_on_transp = true
+      clickedID = -1
+      e.classList.remove('active')
+    } else {
+      clickedID = parseInt(e.srcElement.id.split('-')[1])
+    } 
+    new_color = click_on_transp ? 'rgba(0,0,0,.2)' : game['colors'][clickedID]
     if(!$(game['lastClicked']).hasClass('unclickable')) {
+      // new_col = e.srcElement.getAttribute(transparent' ? 'hsla(0,50%,.2)' : game['colors'][clickedID]
       // change the color of the lastClicked dot with the clicked color from menu
       $(game['lastClicked']).animate({
-        backgroundColor: game['colors'][clickedID]
+        // backgroundColor: game['colors'][clickedID]
+        backgroundColor: new_color
       }, 200, "swing");
       // element clicked wich opened the menu
-      $(game['lastClicked']).addClass('active')
+      click_on_transp ? $(game['lastClicked']).removeClass('active') : $(game['lastClicked']).addClass('active')
       game['currGuess'][game['lastClicked'].split('d')[1]] = clickedID;
     }
   }
+  console.log(new_color)
 }
 
 function showSolution() {
@@ -215,6 +229,7 @@ function createGame(n_colors, show = false) {
   ]
   
   game['colors'] = []
+  // game['colors'] = ['rgba(0,0,0,.35)']
   for(i=0; i< n_colors; i++) {
     // divides all rainbow from color number
     game['colors'].push('hsl(' + Math.ceil(i*(360/n_colors+1)) + ',80%,50%)')
