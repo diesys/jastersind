@@ -1,3 +1,8 @@
+/* for electron */
+::-webkit-scrollbar {
+  display: none;
+}
+
 /* ANIMATIONS */
 @keyframes fadein {
   0%     {display: none}
