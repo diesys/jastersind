@@ -177,6 +177,7 @@ function dotClick(e) {
   // updates the last click
   game['lastClicked'] = newClickID
   dotNumber = parseInt(this.id.split('d')[1]);
+  // $("#color_popup").show()
   changeColor()
 }
 
@@ -207,7 +208,7 @@ function changeColor(e) {
       game['currGuess'][game['lastClicked'].split('d')[1]] = clickedID;
     }
   }
-  console.log(new_color)
+  // console.log(new_color)
 }
 
 function showSolution() {
@@ -217,7 +218,7 @@ function showSolution() {
     $(this).css('background-color', clr);
   });
   $("#solutionContainer").removeClass('hidden');
-  $("#color_popup").hide()
+  // $("#color_popup").hide()
 }
 
 
