@@ -209,6 +209,7 @@ ol.movesContainer {
   box-shadow: 2px 0px 20px rgba(5, 5, 5, .5);
   justify-content: center;
   animation: fadein .7s;
+  z-index: 5;
 }
 #color_popup > li {
   animation: fadein .6s .4s;
