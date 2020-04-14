@@ -229,6 +229,9 @@ function createGame(n_colors, show = false) {
     Math.floor(Math.random() * n_colors), Math.floor(Math.random() * n_colors)
   ]
   
+  game['currGuess'] = [-1, -1, -1, -1];
+  game['lastClicked'] = "#null";
+  
   game['colors'] = []
   // game['colors'] = ['rgba(0,0,0,.35)']
   for(i=0; i< n_colors; i++) {
