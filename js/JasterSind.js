@@ -182,7 +182,7 @@ function dotClick(e) {
 }
 
 function changeColor(e) {
-  console.log(e)
+  // console.log(e)
 
   // fix for the transparent element
   click_on_transp = false
@@ -233,7 +233,16 @@ function createGame(n_colors, show = false) {
   game['lastClicked'] = "#null";
   
   game['colors'] = []
-  // game['colors'] = ['rgba(0,0,0,.35)']
+  // recreates the first transparent dot for removing color
+  $('#color_popup').empty()
+  col_itm = document.createElement("LI")
+  col_itm.classList = "color dot menu active"
+  col_itm.id = "clr-transparent"
+  col_itm.onclick = 'changeColor(this)'
+  col_itm.setAttribute('style', 'hsla(0, 0%, 20%, 0.2);border-color:rgba(200,200,200,.2)')
+  $('#color_popup').append(col_itm)
+  // `<li class="color dot menu active" id="clr-transparent" onclick="changeColor(this)" style="background-color:hsla(0, 0%, 20%, 0.2);border-color:rgba(200,200,200,.2)"></li>`
+  // $('#color_popup').appendChild(transparent)
   for(i=0; i< n_colors; i++) {
     // divides all rainbow from color number
     game['colors'].push('hsl(' + Math.ceil(i*(360/n_colors+1)) + ',80%,50%)')
