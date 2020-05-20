@@ -239,7 +239,7 @@ function createGame(n_colors, show = false) {
   col_itm.classList = "color dot menu active"
   col_itm.id = "clr-transparent"
   col_itm.onclick = 'changeColor(this)'
-  col_itm.setAttribute('style', 'hsla(0, 0%, 20%, 0.2);border-color:rgba(200,200,200,.2)')
+  col_itm.setAttribute('style', 'background:hsla(0, 0%, 10%, 0.6);border-color:rgba(0,0,0,.2)')
   $('#color_popup').append(col_itm)
   // `<li class="color dot menu active" id="clr-transparent" onclick="changeColor(this)" style="background-color:hsla(0, 0%, 20%, 0.2);border-color:rgba(200,200,200,.2)"></li>`
   // $('#color_popup').appendChild(transparent)
