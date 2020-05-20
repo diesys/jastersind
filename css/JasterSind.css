@@ -39,6 +39,7 @@ header {
   /* align-content: center; */
   justify-content: center;
   width: 100%;
+  z-index: 0;
   flex-wrap: wrap;
 }
 header > * {
@@ -314,6 +315,7 @@ select:disabled#clr_select {
   position: absolute;
   background: #000000d0;
   width: 100%;
+  z-index: 1000;
   min-height: 100%;
   height: max-content;
   top: 0;
