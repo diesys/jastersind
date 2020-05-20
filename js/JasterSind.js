@@ -79,6 +79,7 @@ function submit () {
 function newTry() {
   // hides the color menu
   $('#color_popup').addClass('hidden')
+  $('#color_popup').show(); // hidden from th   e win msg
   // disable click on past tries
   const dots = document.querySelectorAll('.try.dot');
   if (dots.length) {
@@ -207,6 +208,10 @@ function changeColor(e) {
       // element clicked wich opened the menu
       click_on_transp ? $(game['lastClicked']).removeClass('active') : $(game['lastClicked']).addClass('active')
       game['currGuess'][game['lastClicked'].split('d')[1]] = clickedID;
+      
+      // automatic click to the next free dot to guess
+      if ($(game['lastClicked']).parent().children().filter(".dot:not(.active)").length)
+        nextGuess = $(game['lastClicked']).parent().children().filter(".dot:not(.active)")[0].click()
     }
   }
   // console.log(new_color)
