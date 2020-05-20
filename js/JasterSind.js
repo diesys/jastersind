@@ -211,6 +211,11 @@ function changeColor(e) {
       // automatic click to the next free dot to guess
       if ($(game['lastClicked']).parent().children().filter(".dot:not(.active)").length)
         nextGuess = $(game['lastClicked']).parent().children().filter(".dot:not(.active)")[0].click()
+      else {
+        $('#color_popup').addClass('hidden')
+        $(game['lastClicked']).removeClass('selected')
+      }
+    
     }
   }
   // console.log(new_color)
