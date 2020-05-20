@@ -56,7 +56,8 @@ function submit () {
     win_msg = document.createElement("DIV");
     win_msg.classList = "win_message";
     tries = $('.try.dot').length/4;
-    win_msg.innerHTML = "You're a Mastermind! You found the combination in " + ((tries == 1) ? '1 try' : tries + ' tries') + ', using ' + game['colors']['length'] + ' colors!';
+    win_msg.innerHTML = "You're a Mastermind! <br> You found the combination in <u>" + ((tries == 1) ? '1 try' : tries + ' tries') + '</u>, using <u>' + game['colors']['length'] + ' colors</u>!';
+    $('#color_popup').hide();
     document.querySelector('#gameboard').appendChild(win_msg);
     
     // mostra nasconde il necessario a fine partita
